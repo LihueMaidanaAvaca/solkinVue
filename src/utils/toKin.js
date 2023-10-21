@@ -32,10 +32,13 @@ export default function toKin(año, fecha){
     
     
     let color = kinMaya
+
     
-    do {
-      color -= 4;
+    if(color > 4){
+      do {
+        color -= 4;
       } while (color > 4);
+    }
     
     let raza = ''
     
