@@ -6,19 +6,29 @@
 
           <!-- Formar una cruz con cinco círculos -->
           <div class="cross">
-            <div class="circle0"></div>
-            <div class="middle">
-              <div class="circle1"></div>
-              <div class="circle0"></div>
-              <div class="circle2"></div>
+            <div class="circle0">
+              <img :src="imgGuia" alt="" style="border-radius: 50%;width: 100%;">
             </div>
-            <div class="circle3"></div>
+            <div class="middle">
+              <div class="circle1">
+                <img :src="imgLeft" alt="" style="border-radius: 50%;width: 100%;">
+              </div>
+              <div class="circle0">
+                <img :src="imgSeal" alt="" style="border-radius: 50%;width: 100%;">
+              </div>
+              <div class="circle2">
+                <img :src="imgRight" alt="" style="border-radius: 50%;width: 100%;">
+              </div>
+            </div>
+            <div class="circle3">
+              <img :src="imgHide" alt="" style="border-radius: 50%;width: 100%;">
+            </div>
           </div>
           <v-form prevent.default>
 
             <v-menu ref="menu" :close-on-content-click="false" offset-y min-width="auto">
               <template v-slot:activator="{ on, attrs }">
-                <v-text-field v-model="date" label="Fecha de Pago" prepend-icon="mdi-calendar" readonly v-bind="attrs"
+                <v-text-field v-model="date" label="Fecha de Nacimiento" prepend-icon="mdi-calendar" readonly v-bind="attrs"
                   v-on="on"></v-text-field>
               </template>
               <v-date-picker v-model="date" color="primary"></v-date-picker>
@@ -51,6 +61,10 @@ export default {
       'Company changed its location',
     ],
     umbral: null,
+    imgSeal: null,
+    imgLeft: null,
+    imgRight: null,
+    imgHide: null
   }),
   methods: {
     miFuncion() {
@@ -70,6 +84,11 @@ export default {
       const kinResult = toKin(dayAndMonthK(day, month), yearK(year));
       console.log(kinResult);
       this.umbral = kinResult.Umbral;
+      this.imgSeal = kinResult.imgSeal;
+      this.imgGuia = kinResult.imgGuia;
+      this.imgLeft = kinResult.imgLeft;
+      this.imgRight = kinResult.imgRight;
+      this.imgHide = kinResult.imgHide;
     },
   },
 }
@@ -95,7 +114,7 @@ export default {
 .circle0 {
   width: 50px;
   height: 50px;
-  background-color: #e4e4e4;
+  background-color: #000000;
   border-radius: 50%;
   margin: 5px;
 }
