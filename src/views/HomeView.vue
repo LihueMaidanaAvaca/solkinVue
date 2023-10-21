@@ -25,7 +25,7 @@
             </v-menu>
             <v-btn @click="miFuncion"></v-btn>
           </v-form>
-
+          <p v-if="umbral">Kin: {{ umbral }}</p>
         </v-card>
       </v-col>
     </v-row>
@@ -50,6 +50,7 @@ export default {
       'Global warming discussion cancelled',
       'Company changed its location',
     ],
+    umbral: null,
   }),
   methods: {
     miFuncion() {
@@ -62,9 +63,13 @@ export default {
       console.log("Mes (número): " + month);
       console.log("Día (número): " + day);
 
-      console.log(dayAndMonthK(day,month));
+      console.log(dayAndMonthK(day, month));
       console.log(yearK(year));
-      console.log(toKin((dayAndMonthK(day,month)),(yearK(year))));
+      console.log(toKin((dayAndMonthK(day, month)), (yearK(year))));
+
+      const kinResult = toKin(dayAndMonthK(day, month), yearK(year));
+      console.log(kinResult);
+      this.umbral = kinResult.Umbral;
     },
   },
 }
